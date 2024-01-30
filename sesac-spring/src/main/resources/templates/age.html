@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h5>실습 문제 </h5>
+<!--    <p th:if="${age} < 20 " th:text="'10대는 미성년자 입니다.'"></p>-->
+<!--    <p th:if="${age1} >20" th:text="'20세부터 성인입니다.'"></p>-->
+
+    <h5>실습 ArrayList</h5>
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+        </tr>
+        <tr th:each="person: ${people}">
+            <td th:text="${person.name}">이름</td>
+            <td th:text="${person.age}">이름</td>
+            <!-- <td th:text="${person}">나이</td> -->
+        </tr>
+    </table>
+</body>
+</html>
