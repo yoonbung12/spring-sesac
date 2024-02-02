@@ -316,9 +316,9 @@ public class MainController {
     public String join(@RequestBody MemberVO memberVO){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String regdate = formatter.format(memberVO.getRegdate());
-        
-        return "이름: " +memberVO.getName() + "\n성별: "+ memberVO.getGender() +
-                "\n 취미: " + memberVO.getHobby() + "\n 생년 월일:  " + regdate + memberVO.getName()+ "회원 가입 성공.!!";
+
+
+        return   memberVO.getName()+ "회원 가입 성공.!!";
     }
 
 

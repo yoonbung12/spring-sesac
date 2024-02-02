@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- Member CRUD만들기 -->
+    <!--  //아이디 비밀번호, 이름, 나이, 생년월일, 전화번호,  -->
+    <h2>회원가입 </h2>
+    <form id="formData" name="joinMember" border="1px" method="post">
+            <div>
+                ID:    <input type="text" name="userId" required/>
+            </div>
+            <div>
+                비밀번호:   <input type="password" name="password" required />
+            </div>
+            <div>
+                이름:    <input type="text" name="userName" required />
+            </div>
+            <button type="submit">회원가입</button>
+    </form>
+
+    <script>
+        function join(){
+            let formData = document.getElementById("formData");
+            let data = new FormData(formData);
+
+            $.ajax({
+                type: 'POST',
+                url: '/member',
+                            <!-- http body 데이터  -->
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                dataType: "json"
+            }).then(function (response){
+                console.log(response.data);
+            }).catch(function(error){
+                console.log(error);
+            })
+
+
+
+        }
+    </script>
+</body>
+</html>
