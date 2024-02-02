@@ -1,0 +1,25 @@
+1. 일반 폼 전송
+ - RequestParam : GET, POST
+ - PathVariable : GET
+2. DTO 이용 - 일반 폼 전송(url)
+- GET? O
+- POST + ModelAttribute? O
+- POST + RequestBody? X
+3. VO 이용 - 일반 폼 전송
+- GET? NULL
+- POST + ModelAttribute? Null
+- POST + RequestBody? X
+4. AXIOS - DTO
+- GET RequestParam : o
+- GET ModelAttribute : o
+- GET RequestBody : x
+- POST RequestParam : x
+- POST ModelAttribute : null
+- POST RequestBody : o
+5. AXIOS VO
+- GET RequestParam : o
+- GET ModelAttribute : NULL
+- GET RequestBody : x
+- POST RequestParam : x
+- POST ModelAttribute : null
+- POST RequestBody : o

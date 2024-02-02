@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<body>
+
+<form id="form_test"  method="post">
+    <h2>post test</h2>
+    이름 : <input type="text" name="name"/>
+    <div>
+        성별
+        <label ><input type="radio" name="gender" value="male"/>남자</label>
+        <label ><input type="radio" name="gender" value="female"/>여자</label>
+    </div>
+    <div>
+        <label for="regdate">가입일:</label>
+        <input type="date" id="regdate" name="regdate" required>
+    </div>
+    <label for="hobby">취미</label>
+    <select id="hobby" name="hobby" required>
+        <option value="reading">독서</option>
+        <option value="sports">운동</option>
+        <option value="gaming">게임</option>
+    </select>
+    <button type="button" onclick="join();">회원 가입</button>
+</form>
+<script>
+    function join() {
+        var form = document.getElementById('form_test');
+        var formData = new FormData(form);
+
+        var object = {};
+        formData.forEach(function(value, key){
+            object[key] = value;
+        });
+        var json = JSON.stringify(object);
+
+        axios.post('/join', json, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+</script>
+</body>
+</html>
