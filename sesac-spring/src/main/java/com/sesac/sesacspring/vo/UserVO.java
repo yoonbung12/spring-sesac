@@ -4,6 +4,6 @@ import lombok.Getter;
 
 @Getter
 public class UserVO {
-    private String name;
-    private String age;
+//    private String name;
+//    private String age;
 }
