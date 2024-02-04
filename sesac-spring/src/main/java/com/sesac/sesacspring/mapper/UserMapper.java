@@ -3,7 +3,6 @@ package com.sesac.sesacspring.mapper;
 import com.sesac.sesacspring.domain.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

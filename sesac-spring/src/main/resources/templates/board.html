@@ -61,7 +61,11 @@
     작성
   </button>
 </form>
+
 <table border="1">
+  <tr th:if="boards.empty">
+    <td colspan="2"> 게시글이 없습니다.</td>
+  </tr>
   <tr>
     <th>No.</th>
     <th>ID</th>
@@ -71,6 +75,17 @@
     <th>수정</th>
     <th>삭제</th>
   </tr>
+  <tr th:each="board : ${boards}">
+    <!--    <td>ID</td>-->
+    <td th:text="${board.id}">No.</td>
+    <td th:text="${board.title}">제목</td>
+    <td th:text="${board.writer}">작성자</td>
+    <td th:text="${board.registered}">작성일</td>
+    <td>수정</td>
+    <td>삭제</td>
+  </tr>
+
+
   <!--    타임리프 문법 이용해서 게시판 글 보여주기 -->
 </table>
 </body>
