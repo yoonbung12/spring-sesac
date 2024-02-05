@@ -15,6 +15,12 @@ public class BoardService {
     @Autowired
     BoardMapper boardMapper;
 
+    // 검색 부분
+    public List<Board> searchBoard(String word) {
+        List<Board> result = boardMapper.searchBoard();
+        return result;
+    }
+
     // 조회부분
     public List<BoardDTO> getAll() {
         // controller에서 호출하는 메서드
@@ -27,12 +33,30 @@ public class BoardService {
         // List<Board> -> List<BOardDTO> 에 담는다.
         for(Board board : boards) {
             BoardDTO boardDTO = new BoardDTO();
+            boardDTO.setNo(board.getNo());
             boardDTO.setTitle(board.getTitle());
             boardDTO.setContent(board.getContent());
             boardDTO.setWriter(board.getWriter());
+            boardDTO.setRegistered(board.getRegistered());
 
             result.add(boardDTO);
         }
         return result;
     }
+
+    // board 작성
+    public void createBoard(String title, String content, String writer) {
+        boardMapper.createBoard(title, content, writer);
+    }
+
+    // board 수정
+    public void updateBoard(int no, String title, String content, String writer) {
+        boardMapper.updateBoard(no, title, content, writer);
+    }
+
+    // board 삭제
+    public void deleteBoard(int no) {
+        boardMapper.deleteBoard(no);
+    }
+
 }

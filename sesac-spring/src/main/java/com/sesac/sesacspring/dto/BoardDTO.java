@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ public class BoardDTO {
 //    writer varchar(10) not null,
 //    registered timestamp default current_timestamp on update current_timestamp
 
-    private int id;
+    private int no;
     private String title;
     private String content;
     private String writer;
