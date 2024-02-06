@@ -23,3 +23,10 @@
 - POST RequestParam : x
 - POST ModelAttribute : null
 - POST RequestBody : o
+
+-- 프론트에서 동적폼 전송 -> Post, patch, delete 등 body 에 데이터를 보내는 친구
+= @RequestBody 객체(setter가 필수 아니다)로 받아야 한다.
+
+-- 일반폼 전송 ( + 동적폼전송 get) ->
+= 변수 하나하나 받을 거라면 : @RequestParam
+= 객체로 받을 거라면 : @ModelAttribute (setter 필수)
