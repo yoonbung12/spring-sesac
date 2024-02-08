@@ -31,7 +31,7 @@ public class Student {
     // name varchar(20) not null,
 
     @Column(columnDefinition = "TEXT")
-    private String nickName;
+    private String nickname;
 
     // enum
     @Column
