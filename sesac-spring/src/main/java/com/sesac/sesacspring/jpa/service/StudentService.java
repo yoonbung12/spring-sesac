@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -68,6 +69,32 @@ public class StudentService {
 
         // Optional<T> : java 8 부터 등장
         // null 일 수도 있는 객체를 감싸는 wrapper 클래스
+
+    }
+
+    // 실습1-1. count 라는 거 이용해서 ?nickname=값 일치하는 친구 몇명인지 가져오기
+    public String searchStudentByNickname(String nickname) {
+        int count = studentRepository.countByNickname(nickname);
+        // count 라는 method를 활용해라
+        // countByNickname(String nickname ) = select count(*)
+        return "같은 닉네임을 가진 사람은" + count + "명 입니다.";
+    }
+
+    // 실습1-2. "?id={id}&name={name}" 보냈을때 id값의 튜플의 name 컬럼으로 변경하기
+    public String updateStudent(int id, String name) {
+        // save(T) : 새로운 entity를 삽입 OR 기존 entity를 update
+        // T의 기본값(pk)의 상태에 따라 다르게 동작
+        // - pk 값이 존재하는 경우 : pk와 연결된 entity를 update
+        // - pk 값이 없는 경우 : 새로운 entity를 insert
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("id is wrong"));
+        Student modifiedStudent =
+                Student.builder().id(id).name(name).nickname(student.getNickname())
+                        .type(student.getType())
+                        .build();
+
+        studentRepository.save(modifiedStudent); // insert랑update는 기존객체를 안건드리고 새롭게 만들어진다.
+        return "update Success";
 
     }
 }

@@ -57,6 +57,21 @@ public class StudentController {
         return studentService.searchStudentById(id);
     }
 
+    // 5. 실습1-1
+    @GetMapping("/search/count")
+    public String searchCountByNickname(@RequestParam String nickname) {
+        return studentService.searchStudentByNickname(nickname);
+    }
+
+    // 5. 실습1-2
+    @GetMapping("/update")
+    public String updateStudent(@RequestParam int id,
+                                @RequestParam String name) {
+        // id: 내가 변경할 데이터의 p-key
+        // name : 내가 변경하고자 하는 name의 컬럼의 값
+        return studentService.updateStudent(id, name);
+    }
+
 //
 //    @GetMapping("search")
 //    public ?

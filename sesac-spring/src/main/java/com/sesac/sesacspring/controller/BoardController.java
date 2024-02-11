@@ -17,7 +17,13 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
-    // 1.게시물 조회
+    // 1.게시물 조회(myBatis)
+//    @GetMapping("")
+//    public String listAll(Model model) {
+//        model.addAttribute("boards", boardService.getAll());
+//        return "board";
+//    }
+    // 1. 게시물 조회 jpa 버전
     @GetMapping("")
     public String listAll(Model model) {
         model.addAttribute("boards", boardService.getAll());

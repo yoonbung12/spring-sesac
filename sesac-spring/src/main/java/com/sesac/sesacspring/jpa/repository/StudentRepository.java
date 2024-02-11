@@ -2,6 +2,7 @@ package com.sesac.sesacspring.jpa.repository;
 
 import com.sesac.sesacspring.jpa.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -26,5 +27,9 @@ public interface StudentRepository  extends JpaRepository<Student, Integer> {
     // @Query("select s from Student s where s.name = :name")
     @Query(nativeQuery = true, value = "select * from student where name= :a") // a는 parameter다..
     List<Student> findTest(String a);
+
+    // 실습1-1. 같은 닉네임을 가진 사람이 몇명인지 count 하기
+    int countByNickname(String nickname);
+
 
 }
